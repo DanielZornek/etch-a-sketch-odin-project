@@ -4,7 +4,12 @@ let isMouseDown = false;
 let isMouseOver = false;
 let corAtual = "#fff";
 
-let squares = parseInt(prompt("tamanho: "));
+let squares;
+
+window.onload = () =>{
+  squares = parseInt(prompt("width: "));
+  showPixel(squares);
+}
 
 document.addEventListener("mousedown", ()=>{
   isMouseDown = true;
@@ -47,12 +52,28 @@ const createPixel = () => {
 	return pixel;
 }
 
-// window.onresize = () =>{
-// 	console.log("foi");
-// }
+function resizePaint(){
+  squares = parseInt(prompt("width: "));
+  while(container.firstChild){
+    container.removeChild(container.firstChild);
+  }
+  showPixel(squares);
+}
 
-for(let i = 0; i < squares; i++){
-  for(let j = 0; j < squares; j++){
-    container.append(createPixel());
+function clearPaint(){
+  let pixelSelect = document.querySelectorAll(".pixel");
+  for(let i = 0; i < pixelSelect.length; i++){
+    pixelSelect[i].style.backgroundColor = "#ffffff";
   }
 }
+
+
+function showPixel(squares){
+  for(let i = 0; i < squares; i++){
+    for(let j = 0; j < squares; j++){
+      container.append(createPixel());
+    }
+  }
+}
+
+showPixel();
