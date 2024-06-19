@@ -8,6 +8,12 @@ let squares;
 
 window.onload = () =>{
   squares = parseInt(prompt("width: "));
+  while(squares > 100){
+    squares = parseInt(prompt("must be equal or smaller than 100: "));
+    if(squares <= 100){
+      break;
+    }
+  }
   showPixel(squares);
 }
 
@@ -54,6 +60,12 @@ const createPixel = () => {
 
 function resizePaint(){
   squares = parseInt(prompt("width: "));
+  while(squares > 100){
+    squares = parseInt(prompt("must be equal or smaller than 100: "));
+    if(squares <= 100){
+      break;
+    }
+  }
   while(container.firstChild){
     container.removeChild(container.firstChild);
   }
